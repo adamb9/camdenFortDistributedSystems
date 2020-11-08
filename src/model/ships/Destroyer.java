@@ -1,7 +1,14 @@
 package model.ships;
 
-public class Destroyer implements Ship {
+import java.io.Serializable;
+
+public class Destroyer implements Ship, Serializable {
     public String function(){
-        return "model.ships.Destroyer";
+        return "Destroyer";
+    }
+
+    @Override
+    public String toString() {
+        return "Destroyer";
     }
 }

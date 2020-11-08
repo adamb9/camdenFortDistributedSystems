@@ -1,6 +1,11 @@
+//Name: Adam Baldwin
+//Class: SDH3-A
+//Student Number: R00176025
+
 package view;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -61,15 +66,11 @@ public class Main extends Application {
 
     }
 
+    public static void exitProgram(){
+        Platform.exit();
+    }
 
     public static void main(String[] args) {
-
-        StoreDaoImpl singletonExample = StoreDaoImpl.getInstance();
-        singletonExample.showMessage();
-
-        StoreDao storeDao = singletonExample;
-        DataStore store = storeDao.getAllStores().get(0);
-
         launch(args);
     }
 }

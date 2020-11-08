@@ -1,7 +1,14 @@
 package model.bombs;
 
-public class Torpedo implements Bomb{
+import java.io.Serializable;
+
+public class Torpedo implements Bomb, Serializable {
     public String function(){
-        return "model.bombs.Torpedo";
+        return "Torpedo";
+    }
+
+    @Override
+    public String toString() {
+        return "Torpedo";
     }
 }

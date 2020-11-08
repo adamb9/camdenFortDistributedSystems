@@ -1,7 +1,14 @@
 package model.bombs;
 
-public class BlastBomb implements Bomb{
+import java.io.Serializable;
+
+public class BlastBomb implements Bomb, Serializable {
     public String function() {
-        return "Blast model.bombs.Bomb";
+        return "Blast Bomb";
+    }
+
+    @Override
+    public String toString() {
+        return "Blast Bomb";
     }
 }

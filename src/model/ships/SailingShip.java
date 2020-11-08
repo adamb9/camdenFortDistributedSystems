@@ -1,7 +1,14 @@
 package model.ships;
 
-public class SailingShip implements Ship {
+import java.io.Serializable;
+
+public class SailingShip implements Ship, Serializable {
     public String function(){
-        return "Sailing model.ships.Ship";
+        return "Sailing Ship";
+    }
+
+    @Override
+    public String toString() {
+        return "Sailing Ship";
     }
 }

@@ -1,15 +1,14 @@
 package model;
 
+import model.ships.Ship;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Kinsale implements Sentry, Runnable {
-    private Thread t;
+public class Kinsale implements Sentry, Runnable, Serializable {
     private String threadName;
-
-    private int shipType;
     ArrayList<Observer> observerList;
-    String kinsale = "model.Kinsale";
 
     public Kinsale(){
         threadName = "KinsaleThread";
@@ -29,35 +28,26 @@ public class Kinsale implements Sentry, Runnable {
     }
 
     @Override
-    public void notifyObservers()
+    public void notifyObservers(Ship ship)
     {
         for (Iterator<Observer> it =
              observerList.iterator(); it.hasNext();)
         {
             Observer o = it.next();
-            o.update(kinsale, shipType);
+            o.update(this, ship);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Kinsale";
     }
 
     public void run() {
         System.out.println("Running " +  threadName );
     }
 
-   /* public void start () {
-        System.out.println("Starting " +  threadName );
-        if (t == null) {
-            t = new Thread (this, threadName);
-            t.start ();
-        }
-    }
-    */
-
-    private int getLatestShip(){
-        return 2;
-    }
-
-    void change(){
-        shipType = getLatestShip();
-        notifyObservers();
+    public synchronized void change(Ship ship){
+        notifyObservers(ship);
     }
 }
